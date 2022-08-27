@@ -1,72 +1,73 @@
 // check for valid palindrome in a sentence
-#include <iostream>
-#include <string.h>
+#include<iostream>
+#include<string.h>
 using namespace std;
 
-void to_lowercase(string &s)
+class Solution
 {
 
-    int size = s.size() - 1;
-    for (int i = 0; i < size; i++)
+private:
+    bool validate(char ch)
     {
-        if (s[i] >= 'A' && s[i] <= 'Z')
+        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9'))
         {
-            s[i] = s[i] - 'A' + 'a';
+            return 1;
         }
+        return 0;
     }
-}
 
-bool check_palindrome(string &s){
-
-    int start = 0;
-    int end = s.size()-1;
-    while (start < end)
+    char to_lowercase(char ch)
     {
-        if (!((s[start] >='a' && s[start] <='z')  || (s[start] >= '0' && s[start]<='9'))) //for special charater
+        if ((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9'))
         {
-            start++;
-            continue;
-        }
-        if (!((s[end] >='a' && s[end] <='z')  || (s[end] >= '0' && s[end]<='9'))) //for special charater
-        {
-            end--;
-            continue;
-        }
-        if (s[start] == s[end])
-        {
-            start++;
-            end--;
+            return ch;
         }
         else
         {
-            return 0;
-        }  
+            char temp = ch - 'A' + 'a';
+            return temp;
+        }
     }
-    return 1;
-    
-}
 
-
-
-
-int main()
-{
-
-    string s = "A MN, a plan, a CANAL: Panama";
-
-    // change the case of string
-    to_lowercase(s);
-
-    if (check_palindrome(s))
+    bool check_palindrome(string s)
     {
-        cout<<"is palindrome";
+        int start = 0;
+        int end = s.length() - 1;
+        while (start <= end)
+        {
+            if (s[start] != s[end])
+            {
+                return 0;
+            }
+            else
+            {
+                start++;
+                end--;
+            }
+        }
+        return 1;
     }
-    else
-    {
-        cout<<"is not palindrome";
-    }
-    
-    
 
-    return 0;
-}
+public:
+    bool isPalindrome(string s)
+    {
+        // 1. removing unwanted characters
+        string temp = "";
+        for (int i = 0; i < s.length(); i++)
+        {
+            if (validate(s[i]))
+            {
+                temp.push_back(s[i]);
+            }
+        }
+
+        // 2. converting to lower case
+        for (int i = 0; i < temp.length(); i++)
+        {
+            temp[i] = to_lowercase(temp[i]);
+        }
+
+        // 3. check for palindrome
+        return check_palindrome(temp);
+    }
+};
