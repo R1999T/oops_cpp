@@ -154,7 +154,7 @@ int main()
 {
     // 1.
     // Employee employee1;
-    // commet to see default constructor
+    // comment to see default constructor
     //  employee1.Name = "raghav";
     //  employee1.Company = "raghav_enterprise";
     //  employee1.Age = 25;
@@ -203,7 +203,7 @@ int main()
     //IMPORTANT RULE: The most common use of polymorphism is whaen a parent
     //class reference is used to refer to achild class object
     Employee *e1 = &d;// Developer IS AN Employee type
-    Employee* e2 = &t;
+    Employee* e2 = &t;//base class ptr derived class object
 
     e1->work();
     e2->work();
@@ -225,6 +225,8 @@ c. protected
 
 3. constructor: it is a special method which is invoked every time an object of class created,
     it we don't create it default constructor will run.
+    It is used to initialize the data members of new objects generally.
+    It constructs the values i.e. provides data for the object which is why it is known as constructors.
 RULES:
 -   It does not have return type
 -   It has the same name as that of class
@@ -240,7 +242,7 @@ RULES:
 4. polymorphism
 
 /4.1/Encapsulation: we want to secure the data in class so that it cannot be accessed directly by other class.
-        we want to provide the data with out own way.
+        we want to provide the data with our own way.
         "It describes the idea of bundling data and methods that work on that data within one unit"
     getters and setters are the way to do encapsulation
     only the members of the particular class will be able to access the variables
@@ -262,7 +264,50 @@ HIDING COMPLEXITY FROM USER
 -   parent class object is used to refer to a child class
 -   //but d is developer and t is teacher so we can define work differently for both of them
 
+In C++, polymorphism is mainly divided into two types:
+
+1. COMPILE TIME POLYMORPHISM: 
+    This type of polymorphism is achieved by function overloading or operator overloading.
+    It can be achieved using 
+    a. function overloading: same name function DIFFERENT PARMETERS
+    function with 1 int parameter
+    void func(int x)
+    {
+        cout << "value of x is " << x << endl;
+    }
+      
+    function with same name but 1 double parameter
+    void func(double x)
+    {
+        cout << "value of x is " << x << endl;
+    }
 
 
+    b. operator overloading:
+        c++ provide this option also
+        we can make use of the addition operator (+) for string class to concatenate two strings. We know that the task of this operator is to add two operands.
+        Complex operator + (Complex const &obj) {
+         Complex res;
+         res.real = real + obj.real;
+         res.imag = imag + obj.imag;
+         return res;
+    }
+
+
+
+
+
+
+2. Runtime Polymorphism:
+    This type of polymorphism is achieved by Function Overriding.
+    Function overriding occurs when a derived class has a definition for one of the member functions of the base class. 
+    That base function is said to be overridden. 
+
+
+/5/SOME DEFINITIONS:::
+
+A virtual function is a member function which is declared within a base class and is re-defined (overridden) by a derived class. 
+When you refer to a derived class object using a pointer or a reference to the base class, 
+you can call a virtual function for that object and execute the derived class’s version of the function. 
 
 */
