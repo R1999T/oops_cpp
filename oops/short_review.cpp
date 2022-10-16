@@ -176,7 +176,7 @@ int main()
     // 4.1 encapsulation
     Employee employee4;
     employee4.set_age(16);
-    employee4.set_name("r1ghav");
+    employee4.set_name("raghav");
     employee4.set_company("comp");
     std::cout << employee4.get_name() << " is " << employee4.get_age() << " years old." << std::endl;
 
@@ -222,9 +222,10 @@ b. private
 c. protected
 
 2. class method is a function that process the data of the object
-
+   Class is a fundamental block of a program that has its own set of methods and variables
+   
 3. constructor: it is a special method which is invoked every time an object of class created,
-    it we don't create it default constructor will run.
+    it we don't create it, default constructor will run.
     It is used to initialize the data members of new objects generally.
     It constructs the values i.e. provides data for the object which is why it is known as constructors.
 RULES:
@@ -234,6 +235,18 @@ RULES:
 
     when we create our own constructor we looses the default constructor created by compiler
     it also reduces the code
+
+    COPY CONSTRUCTOR:
+    "A copy constructor is a member function that initializes an object using another object of the same class.
+    prototype syntax"
+    or
+    "Copy constructor is used to initialize the members of a newly created object by copying the members of an already existing object"
+
+    THS type of initialization is called COPY INITIALIZATION
+    If prorammer DOES NOT DEFINE  the copy constructor COMPILER does that.
+
+
+    class_name(const class_name &old_obj);
 
 /4/four pillers of OOPS
 1. incapsulation
@@ -309,5 +322,11 @@ In C++, polymorphism is mainly divided into two types:
 A virtual function is a member function which is declared within a base class and is re-defined (overridden) by a derived class. 
 When you refer to a derived class object using a pointer or a reference to the base class, 
 you can call a virtual function for that object and execute the derived class’s version of the function. 
+
+
+friend Function:
+As the name suggests, the function acts as a friend to a class.
+As a friend of a class, it can access its private and protected members. A friend function is not a member of the class.
+But it must be listed in the class definition. 
 
 */
